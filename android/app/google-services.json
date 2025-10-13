@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "465322699738",
+    "project_id": "vrsec-admin",
+    "storage_bucket": "vrsec-admin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465322699738:android:5dd0a9a0781c3a2c7b6ee3",
+        "android_client_info": {
+          "package_name": "com.example.vrsec_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465322699738-b25n4911h81unlvsucn3aub900skv4rt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vrsec_admin",
+            "certificate_hash": "a2e4a1799ef80bdada649f835a643ccf89da982f"
+          }
+        },
+        {
+          "client_id": "465322699738-8nc0qmapcruvtoso7htrojq76sdlr72j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9UFgVSPWig8DOccboU58POz0AGo1aEmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465322699738-8nc0qmapcruvtoso7htrojq76sdlr72j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
