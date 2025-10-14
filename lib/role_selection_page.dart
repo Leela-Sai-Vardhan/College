@@ -9,33 +9,51 @@ class RoleSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Select Your Role',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.deepPurple,
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.deepPurple, Colors.purpleAccent],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Logo Space - Add your image here
+                Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  // Replace the placeholder below with your actual logo
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.contain,
+                  ),
+                  // If you don't have the logo yet, use this placeholder:
+                  // child: Center(
+                  //   child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Icon(Icons.school, size: 60, color: Colors.blue[800]),
+                  //       SizedBox(height: 8),
+                  //       Text(
+                  //         'LOGO HERE',
+                  //         style: TextStyle(
+                  //           color: Colors.grey[600],
+                  //           fontSize: 12,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                ),
+                SizedBox(height: 60),
+
+                // Student Login Button
                 _buildRoleButton(
                   context,
-                  icon: Icons.school,
-                  label: 'Login as Student',
-                  color: Colors.green,
+                  label: 'STUDENT LOGIN',
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -45,11 +63,11 @@ class RoleSelectionPage extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 20),
+
+                // Faculty Login Button
                 _buildRoleButton(
                   context,
-                  icon: Icons.person,
-                  label: 'Login as Faculty',
-                  color: Colors.blue,
+                  label: 'FACULTY LOGIN',
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -59,11 +77,11 @@ class RoleSelectionPage extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 20),
+
+                // Parent Login Button
                 _buildRoleButton(
                   context,
-                  icon: Icons.family_restroom,
-                  label: 'Login as Parent',
-                  color: Colors.orange,
+                  label: 'PARENT LOGIN',
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -72,6 +90,7 @@ class RoleSelectionPage extends StatelessWidget {
                     );
                   },
                 ),
+                SizedBox(height: 60),
               ],
             ),
           ),
@@ -82,26 +101,29 @@ class RoleSelectionPage extends StatelessWidget {
 
   // Helper Method to Create a Styled Button
   Widget _buildRoleButton(BuildContext context,
-      {required IconData icon,
-      required String label,
-      required Color color,
-      required VoidCallback onPressed}) {
-    return ElevatedButton.icon(
-      icon: Icon(icon, size: 28),
-      label: Text(
-        label,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color, // Use backgroundColor instead of primary
-        foregroundColor: Colors.white, // Replaces onPrimary
-        padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+      {required String label, required VoidCallback onPressed}) {
+    return SizedBox(
+      width: double.infinity,
+      height: 55,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blue[700],
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: 3,
         ),
-        elevation: 5,
+        onPressed: onPressed,
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.0,
+          ),
+        ),
       ),
-      onPressed: onPressed,
     );
   }
 }

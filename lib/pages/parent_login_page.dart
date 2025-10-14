@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vrsec_admin/pages/parent_dashboard.dart'; // Assuming you have this
 
 class ParentLoginPage extends StatelessWidget {
+  const ParentLoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,10 +39,6 @@ class ParentLoginPage extends StatelessWidget {
                           builder: (context) => ParentDashboard()), // Adjust
                     );
                   },
-                  child: Text(
-                    'Continue as Guest',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     foregroundColor: Colors.white,
@@ -48,6 +46,10 @@ class ParentLoginPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
+                  ),
+                  child: Text(
+                    'Continue as Guest',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

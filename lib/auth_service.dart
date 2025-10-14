@@ -32,7 +32,7 @@ class AuthService {
       if (googleUser == null) {
         return null; // If the user cancels the sign-in
       }
-      final GoogleSignInAuthentication googleAuth = await googleUser !.authentication;
+      final GoogleSignInAuthentication googleAuth = await googleUser .authentication;
 
       final UserCredential userCredential = await _auth.signInWithCredential(
         GoogleAuthProvider.credential(

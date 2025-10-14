@@ -6,6 +6,8 @@ import 'package:vrsec_admin/pages/faculty_dashboard.dart';
 class FacultyLoginPage extends StatelessWidget {
   final AuthService _authService = AuthService();
 
+  FacultyLoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +46,6 @@ class FacultyLoginPage extends StatelessWidget {
                       );
                     }
                   },
-                  child: Text(
-                    'Sign in with Google',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
@@ -55,6 +53,10 @@ class FacultyLoginPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
+                  ),
+                  child: Text(
+                    'Sign in with Google',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

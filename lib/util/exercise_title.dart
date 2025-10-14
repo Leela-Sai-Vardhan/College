@@ -6,11 +6,11 @@ class ExerciseTitle extends StatelessWidget {
   final int numberofExercises;
 
   const ExerciseTitle({
-    Key? key,
+    super.key,
     required this.icon,
     required this.exerciseName,
     required this.numberofExercises,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

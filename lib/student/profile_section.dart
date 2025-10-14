@@ -11,7 +11,7 @@ class ProfileSection extends StatelessWidget {
   final FirestoreService firestoreService =
       FirestoreService(); // Firestore service instance
 
-  ProfileSection({Key? key}) : super(key: key);
+  ProfileSection({super.key});
 
   // Method to upload profile picture
   Future<void> _updateProfilePicture(
