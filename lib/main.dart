@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       create: (context) => UserModel(), // Provide UserModel to the widget tree
       child: MaterialApp(
         title: 'VRSEC Admin',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

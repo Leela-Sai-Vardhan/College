@@ -102,10 +102,14 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                Text(
-                  '14-07-2025 to 20-07-2025',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                Flexible(
+                  child: Text(
+                    '14-07-2025 to 20-07-2025',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
+                SizedBox(width: 8),
                 Text(
                   'ECE-4',
                   style: TextStyle(
@@ -118,12 +122,14 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
             ),
           ),
 
-          // Date Selector
+          // Date Selector - FIXED
           Container(
-            height: 85,
+            height: 80,
             color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 4),
               itemCount: days.length,
               itemBuilder: (context, index) {
                 bool isSelected = selectedDayIndex == index;
@@ -131,12 +137,11 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                   onTap: () => setState(() => selectedDayIndex = index),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
-                    width: 65,
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
+                    width: 58,
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
                     decoration: BoxDecoration(
                       color: isSelected ? Colors.black : Colors.transparent,
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(color: Colors.grey.shade300),
                     ),
                     child: Column(
@@ -146,15 +151,16 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                           '${dates[index]}',
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        const SizedBox(height: 2),
                         Text(
                           days[index],
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black54,
-                            fontSize: 15,
+                            fontSize: 13,
                           ),
                         ),
                       ],
@@ -205,9 +211,15 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                     ],
                   ),
                   child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
                     leading: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.lightBlue.shade50,
                         borderRadius: BorderRadius.circular(8),
@@ -217,7 +229,7 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
-                          fontSize: 12,
+                          fontSize: 11,
                         ),
                       ),
                     ),
@@ -225,15 +237,17 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                       item['subject']!,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 15,
                       ),
                     ),
                     subtitle: Padding(
-                      padding: const EdgeInsets.only(top: 2),
+                      padding: const EdgeInsets.only(top: 4),
                       child: Text(
                         item['time']!,
-                        style:
-                            const TextStyle(color: Colors.grey, fontSize: 14),
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 13,
+                        ),
                       ),
                     ),
                   ),

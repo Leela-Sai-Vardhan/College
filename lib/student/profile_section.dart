@@ -8,12 +8,10 @@ import 'package:vrsec_admin/services/firestore_service.dart';
 import '../models/user_model.dart';
 
 class ProfileSection extends StatelessWidget {
-  final FirestoreService firestoreService =
-      FirestoreService(); // Firestore service instance
+  final FirestoreService firestoreService = FirestoreService();
 
   ProfileSection({super.key});
 
-  // Method to upload profile picture
   Future<void> _updateProfilePicture(
       BuildContext context, String userId) async {
     final picker = ImagePicker();
@@ -22,7 +20,6 @@ class ProfileSection extends StatelessWidget {
     if (pickedImage != null) {
       final file = File(pickedImage.path);
 
-      // Display a loading dialog
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -30,19 +27,12 @@ class ProfileSection extends StatelessWidget {
       );
 
       try {
-        // Upload image to Firebase Storage and get the download URL
         String imageUrl = await firestoreService.uploadProfilePicture(
           userId: userId,
           filePath: file.path,
         );
 
-        // Update Firestore with the new profile picture URL
-        await firestoreService.updateUserDetails(
-          userId,
-          {"profilePicture": imageUrl},
-        );
-
-        Navigator.pop(context); // Close the loading dialog
+        Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Profile picture updated!")),
         );
@@ -55,7 +45,6 @@ class ProfileSection extends StatelessWidget {
     }
   }
 
-  // Method to show input dialog and update Firestore
   Future<void> _showUpdateDialog(BuildContext context, String title,
       String fieldKey, String userId) async {
     final TextEditingController controller = TextEditingController();
@@ -78,7 +67,6 @@ class ProfileSection extends StatelessWidget {
               onPressed: () async {
                 final newValue = controller.text.trim();
                 if (newValue.isNotEmpty) {
-                  // Update Firestore
                   await firestoreService.updateUserDetails(
                     userId,
                     {fieldKey: newValue},
@@ -99,10 +87,8 @@ class ProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the UserModel using Provider
     final userModel = Provider.of<UserModel>(context);
 
-    // Mock data for profile completion cards
     final List<ProfileCard> profileCompletionCards = [
       ProfileCard(
         icon: Icons.account_circle,
@@ -127,7 +113,6 @@ class ProfileSection extends StatelessWidget {
       ),
     ];
 
-    // Mock data for custom list tiles
     final List<CustomListTile> customListTiles = [
       CustomListTile(icon: Icons.notifications, title: 'Notifications'),
       CustomListTile(icon: Icons.language, title: 'Language Preferences'),
@@ -143,9 +128,7 @@ class ProfileSection extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {
-              // Settings action
-            },
+            onPressed: () {},
             icon: const Icon(Icons.settings_rounded),
           ),
         ],
@@ -196,9 +179,7 @@ class ProfileSection extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
-                value: userModel.branch.isEmpty
-                    ? null
-                    : userModel.branch, // Current branch
+                value: userModel.branch.isEmpty ? null : userModel.branch,
                 items: [
                   'Computer Science',
                   'Mechanical Engineering',
@@ -221,7 +202,7 @@ class ProfileSection extends StatelessWidget {
                     );
                     await firestoreService.updateUserDetails(
                       userModel.userId,
-                      {'branch': value}, // Update branch in Firestore
+                      {'branch': value},
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Branch updated to $value")),
@@ -341,7 +322,6 @@ class ProfileSection extends StatelessWidget {
   }
 }
 
-// Define classes for profile completion cards
 class ProfileCard {
   final IconData icon;
   final String title;

@@ -79,7 +79,7 @@ class ProgressPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 8),
                               const Text(
-                                'A.Y. 2025-26 - Odd',
+                                'E.C. 2025-26',
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey,
